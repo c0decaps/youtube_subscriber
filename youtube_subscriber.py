@@ -1,5 +1,5 @@
 from xml.etree import ElementTree
-import sys
+import sys, os.path
 
 def extract_rss_urls_from_opml(filename):
     channels = {}
@@ -20,10 +20,15 @@ def create_html_file(channel_id_dict):
         file.write('<a target="_blank" href="https://www.youtube.com/channel/'+str(channel_id_dict[channel])+'?sub_confirmation=1">'+str(channel)+'</a><br><br>')
     file.write('</html>')
     file.close()
-    print('wrote file')
+    print('Sucessfully created file.')
 
-filename = 'subscription_manager'
-if(len(sys.argv) > 1):
-    filename = sys.argv[1]
-urls = extract_rss_urls_from_opml(filename)
-create_html_file(urls)
+
+if __name__ == '__main__':
+    filename = 'subscription_manager'
+    if(len(sys.argv) > 1):
+        filename = sys.argv[1]
+    if os.path.isfile(filename):
+        urls = extract_rss_urls_from_opml(filename)
+        create_html_file(urls)
+    else:
+        print("Error: Please specify subscription manager file. (python youtube_subscriber.py filename.txt)")
