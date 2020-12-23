@@ -8,3 +8,6 @@ The URLs are constructed like the following:
 https://www.youtube.com/channel/ID?sub_confirmation=1
 ```
 where ID corresponds to the channels ID, which is inserted in that URL when iterating through the channels in the list
+
+### TODO:
+  * as exporting ones subscriptions to a file is not available anymore a new way has to been found to get the list of subscriptions. The url provided still leads to a list of all channels subscribed to so one could get the html and parse the channels out of there but there probably exists a nicer method
